@@ -12,7 +12,7 @@ function handleAccountChanged(pubkey: any) {
 
 export const SolflareAdapter: WalletAdapter = {
   name: 'Solflare',
-  icon: 'https://play-lh.googleusercontent.com/4E-ouY-jU11F0Y7g5J0cl_rCjxVPzFanY3KS-J_0V5tzQewpqI68rqUAPVCaluk61Cg',
+  icon: 'https://cdn.prod.website-files.com/66e480f0e9eccea9c231ce92/66e619478b339554984f72ff_solflare-wallet-logo.png',
   url: 'https://solflare.com/',
 
   ready(): boolean {
