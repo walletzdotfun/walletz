@@ -11,8 +11,11 @@ export function WalletzButton() {
     balanceSOL,
     openModal,
     disconnect,
-    walletName
+    walletName,
+    config
   } = useWalletz();
+
+  const theme = config?.theme || 'light';
 
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -55,7 +58,7 @@ export function WalletzButton() {
 
   // If connected
   return (
-    <div className="walletz-dropdown-container" ref={dropdownRef}>
+    <div className={`walletz-dropdown-container walletz-theme-${theme}`} ref={dropdownRef}>
       <button 
         className="walletz-connect-button walletz-connected" 
         onClick={handleButtonClick}

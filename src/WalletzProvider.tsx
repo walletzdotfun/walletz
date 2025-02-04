@@ -19,7 +19,11 @@ const DEFAULT_STATE: WalletzState = {
 };
 
 export function WalletzProvider({ children, config }: Props) {
-  const { rpcUrl = 'https://api.mainnet-beta.solana.com', autoConnect = false } = config || {};
+  const { 
+    rpcUrl = 'https://api.mainnet-beta.solana.com', 
+    autoConnect = false,
+    theme = 'light'
+  } = config || {};
 
   const [state, setState] = useState<WalletzState>({
     ...DEFAULT_STATE,
@@ -198,6 +202,7 @@ export function WalletzProvider({ children, config }: Props) {
     openModal,
     closeModal,
     isModalOpen,
+    config: { ...config, theme },
   };
 
   return (

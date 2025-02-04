@@ -27,4 +27,5 @@ export interface WalletzState {
 export interface WalletzConfig {
   rpcUrl?: string;
   autoConnect?: boolean;
+  theme?: 'light' | 'dark';
 }

@@ -1,10 +1,45 @@
+/* Theme Variables */
+.walletz-theme-light {
+  --walletz-bg-primary: #ffffff;
+  --walletz-bg-secondary: #f8fafc;
+  --walletz-bg-overlay: rgba(17, 17, 17, 0.8);
+  --walletz-text-primary: #1e293b;
+  --walletz-text-secondary: #64748b;
+  --walletz-border-color: #e2e8f0;
+  --walletz-hover-bg: #f1f5f9;
+  --walletz-button-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --walletz-button-hover: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --walletz-shadow-color: rgba(0, 0, 0, 0.1);
+  --walletz-disconnect-bg: #fee2e2;
+  --walletz-disconnect-color: #ef4444;
+  --walletz-disconnect-border: #fecaca;
+  --walletz-connected-status: #22c55e;
+}
+
+.walletz-theme-dark {
+  --walletz-bg-primary: #111827;
+  --walletz-bg-secondary: #1f2937;
+  --walletz-bg-overlay: rgba(0, 0, 0, 0.85);
+  --walletz-text-primary: #f3f4f6;
+  --walletz-text-secondary: #9ca3af;
+  --walletz-border-color: #374151;
+  --walletz-hover-bg: #272f3d;
+  --walletz-button-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --walletz-button-hover: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --walletz-shadow-color: rgba(0, 0, 0, 0.3);
+  --walletz-disconnect-bg: #450a0a;
+  --walletz-disconnect-color: #f87171;
+  --walletz-disconnect-border: #991b1b;
+  --walletz-connected-status: #22c55e;
+}
+
 .walletz-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(17, 17, 17, 0.8);
+  background: var(--walletz-bg-overlay);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -14,9 +49,9 @@
 }
 
 .walletz-modal {
-  background: #ffffff;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--walletz-bg-primary);
+  box-shadow: 0 8px 32px var(--walletz-shadow-color);
+  border: 1px solid var(--walletz-border-color);
   border-radius: 24px;
   padding: 32px;
   min-width: 360px;
@@ -28,7 +63,7 @@
   margin: 0 0 24px 0;
   font-size: 24px;
   font-weight: 600;
-  color: #111827;
+  color: var(--walletz-text-primary);
   text-align: center;
 }
 
@@ -42,21 +77,21 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--walletz-bg-secondary);
+  border: 1px solid var(--walletz-border-color);
   border-radius: 16px;
   padding: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
-  color: #334155;
+  color: var(--walletz-text-primary);
 }
 
 .walletz-option:hover {
-  background: #f1f5f9;
+  background: var(--walletz-hover-bg);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-color: #cbd5e1;
+  border-color: var(--walletz-border-color);
 }
 
 .walletz-option:active {
@@ -67,9 +102,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  color: #94a3b8;
+  background: var(--walletz-bg-secondary);
+  border: 1px solid var(--walletz-border-color);
+  color: var(--walletz-text-secondary);
   text-decoration: none;
   border-radius: 16px;
   padding: 16px;
@@ -78,8 +113,8 @@
 }
 
 .walletz-option-disabled:hover {
-  background: #f1f5f9;
-  color: #64748b;
+  background: var(--walletz-hover-bg);
+  color: var(--walletz-text-secondary);
 }
 
 .walletz-option-icon {
@@ -93,8 +128,8 @@
   grid-column: 1 / -1;
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid #e2e8f0;
-  color: #64748b;
+  border-top: 1px solid var(--walletz-border-color);
+  color: var(--walletz-text-secondary);
   font-size: 0.9em;
   font-weight: 500;
 }
@@ -134,23 +169,25 @@
 .walletz-connect-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  gap: 10px;
+  background: var(--walletz-button-gradient);
   color: white;
-  font-weight: 500;
-  padding: 12px 20px;
-  border-radius: 12px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 14px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 15px;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  height: 42px;
 }
 
 .walletz-connect-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  background: var(--walletz-button-hover);
 }
 
 .walletz-connect-button:active {
@@ -159,8 +196,8 @@
 }
 
 .walletz-connect-button:disabled {
-  background: #e2e8f0;
-  color: #94a3b8;
+  background: var(--walletz-border-color);
+  color: var(--walletz-text-secondary);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -206,63 +243,66 @@
 }
 
 .walletz-connect-button.walletz-connected {
-  background: #ffffff;
-  color: #1e293b;
-  border: 1px solid #e2e8f0;
+  background: var(--walletz-bg-primary);
+  color: var(--walletz-text-primary);
+  border: 1px solid var(--walletz-border-color);
   box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.02),
-    0 0 0 1px rgba(0, 0, 0, 0.01);
-  padding: 10px 16px;
+    0 2px 4px var(--walletz-shadow-color),
+    0 0 0 1px var(--walletz-border-color);
+  padding: 8px 14px;
+  height: 40px;
+  font-weight: 500;
 }
 
 .walletz-connect-button.walletz-connected:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: var(--walletz-bg-secondary);
+  border-color: var(--walletz-border-color);
   transform: none;
 }
 
 .walletz-balance {
-  margin-left: 12px;
-  padding-left: 12px;
-  border-left: 1px solid #e2e8f0;
-  color: #64748b;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid var(--walletz-border-color);
+  color: var(--walletz-text-secondary);
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
+  font-size: 13px;
 }
 
 .walletz-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--walletz-bg-primary);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--walletz-border-color);
   border-radius: 16px;
-  padding: 16px;
+  padding: 12px;
   min-width: 240px;
   box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  animation: dropdownFade 0.2s ease-out;
+    0 4px 6px -1px var(--walletz-shadow-color),
+    0 2px 4px -1px var(--walletz-shadow-color);
+  animation: dropdownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 9999;
   max-width: calc(100vw - 32px);
   width: max-content;
 }
 
 .walletz-dropdown-wallet-name {
-  padding: 12px 16px;
-  margin: -16px -16px 16px -16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  color: #1e293b;
-  font-weight: 600;
-  font-size: 14px;
-  background: rgba(248, 250, 252, 0.8);
+  padding: 10px 14px;
+  margin: -12px -12px 12px -12px;
+  border-bottom: 1px solid var(--walletz-border-color);
+  color: var(--walletz-text-primary);
+  font-weight: 500;
+  font-size: 13px;
+  background: var(--walletz-bg-secondary);
   border-radius: 16px 16px 0 0;
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: -0.01em;
 }
 
 .walletz-dropdown-wallet-name::before {
@@ -270,31 +310,31 @@
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: var(--walletz-connected-status);
   border-radius: 50%;
   margin-right: 4px;
 }
 
 .walletz-dropdown-disconnect {
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: transparent;
-  color: #ef4444;
-  border: 1px solid #fecaca;
+  color: var(--walletz-disconnect-color);
+  border: 1px solid var(--walletz-disconnect-border);
   border-radius: 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  letter-spacing: -0.01em;
 }
 
 .walletz-dropdown-disconnect:hover {
-  background: #fee2e2;
-  border-color: #ef4444;
+  background: var(--walletz-disconnect-bg);
 }
 
 .walletz-dropdown-disconnect::before {

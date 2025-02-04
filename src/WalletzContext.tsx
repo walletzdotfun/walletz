@@ -10,6 +10,7 @@ export interface WalletzContextValue extends WalletzState {
   openModal(): void;
   closeModal(): void;
   isModalOpen: boolean;
+  config?: WalletzConfig;
 }
 
 export const WalletzContext = React.createContext<WalletzContextValue | null>(null);

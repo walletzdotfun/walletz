@@ -4,7 +4,8 @@ import { ALL_WALLETS } from '../wallets';
 import './styles.css';
 
 export function WalletzModal() {
-  const { isModalOpen, closeModal, connect } = useWalletz();
+  const { isModalOpen, closeModal, connect, config } = useWalletz();
+  const theme = config?.theme || 'light';
 
   if (!isModalOpen) return null;
 
@@ -12,7 +13,7 @@ export function WalletzModal() {
   const otherWallets = ALL_WALLETS.filter((w) => !w.ready());
 
   return (
-    <div className="walletz-modal-overlay" onClick={closeModal}>
+    <div className={`walletz-modal-overlay walletz-theme-${theme}`} onClick={closeModal}>
       <div className="walletz-modal" onClick={(e) => e.stopPropagation()}>
         <h3>Connect a Wallet</h3>
         <div className="walletz-modal-grid">
