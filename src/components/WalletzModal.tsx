@@ -30,7 +30,7 @@ export function WalletzModal() {
           ))}
           {otherWallets.length > 0 && (
             <>
-              <div style={{ marginTop: '1rem' }}>Not Installed:</div>
+              <div className="walletz-not-installed">Not Installed</div>
               {otherWallets.map((wallet) => (
                 <a
                   key={wallet.name}
