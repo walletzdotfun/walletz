@@ -1,32 +1,75 @@
 import { WalletAdapter } from '../types';
 import { encodeMessage } from '../utils';
 
+let solflareAccountChangedCallback: ((newPubkey: string | null) => void) | null = null;
+
+function handleAccountChanged(pubkey: any) {
+  if (solflareAccountChangedCallback) {
+    const pkString = pubkey ? pubkey.toString() : null;
+    solflareAccountChangedCallback(pkString);
+  }
+}
+
 export const SolflareAdapter: WalletAdapter = {
   name: 'Solflare',
-  icon: 'https://solflare.com/logo.png',
+  icon: 'https://solflare.com/favicon.png',
   url: 'https://solflare.com/',
-  ready: function (): boolean {
+
+  ready(): boolean {
     return typeof window !== 'undefined' && !!(window as any).solflare;
   },
-  connect: async function (): Promise<string> {
-    const provider = (window as any).solflare;
-    if (!provider) throw new Error('Solflare not available');
-    await provider.connect();
-    return provider.publicKey?.toString();
-  },
-  disconnect: async function (): Promise<void> {
-    const provider = (window as any).solflare;
-    if (provider?.disconnect) {
-      await provider.disconnect();
+
+  async connect(): Promise<string> {
+    if (!this.ready()) {
+      throw new Error('Solflare is not available.');
+    }
+    try {
+      const provider = (window as any).solflare;
+      await provider.connect();
+      return provider.publicKey?.toString();
+    } catch (error) {
+      throw new Error(`Solflare connect failed: ${(error as Error).message}`);
     }
   },
-  signMessage: async function (message) {
-    const provider = (window as any).solflare;
-    if (!provider.signMessage) {
-      throw new Error('Solflare does not support signMessage?');
+
+  async disconnect(): Promise<void> {
+    try {
+      const provider = (window as any).solflare;
+      if (provider?.disconnect) {
+        await provider.disconnect();
+      }
+    } catch (error) {
+      throw new Error(`Solflare disconnect failed: ${(error as Error).message}`);
     }
-    const encoded = encodeMessage(message);
-    const { signature } = await provider.signMessage(encoded, 'utf8');
-    return signature;
+  },
+
+  async signMessage(message) {
+    const provider = (window as any).solflare;
+    if (!provider?.signMessage) {
+      throw new Error('Solflare does not support signMessage');
+    }
+    try {
+      const encoded = encodeMessage(message);
+      const { signature } = await provider.signMessage(encoded, 'utf8');
+      return signature;
+    } catch (error) {
+      throw new Error(`Solflare signMessage failed: ${(error as Error).message}`);
+    }
+  },
+
+  onAccountChange(callback) {
+    solflareAccountChangedCallback = callback;
+    const provider = (window as any).solflare;
+    if (provider?.on) {
+      provider.on('accountChanged', handleAccountChanged);
+    }
+  },
+
+  removeAccountChange() {
+    solflareAccountChangedCallback = null;
+    const provider = (window as any).solflare;
+    if (provider?.removeListener) {
+      provider.removeListener('accountChanged', handleAccountChanged);
+    }
   }
 };
