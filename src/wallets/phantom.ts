@@ -12,7 +12,7 @@ function handleAccountChanged(pubkey: any) {
 
 export const PhantomAdapter: WalletAdapter = {
   name: 'Phantom',
-  icon: 'https://ipfs.everipedia.org/ipfs/Qmacpgp47AVAKPh1Q8LvEoXLM9ZNsBKqc8nYvbfUHR6K8x',
+  icon: 'https://yt3.googleusercontent.com/0yNbMsS0-rUrtVJmKd6d0xTDmLDEn1qu_KkivaeIC3UmCuXntxE-CJZRhWoy93JXij1YSJFMhA=s900-c-k-c0x00ffffff-no-rj',
   url: 'https://phantom.app/',
   
   ready(): boolean {
