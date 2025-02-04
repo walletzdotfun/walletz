@@ -317,13 +317,13 @@
 
 .walletz-dropdown-disconnect {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 12px;
   background: transparent;
   color: var(--walletz-disconnect-color);
   border: 1px solid var(--walletz-disconnect-border);
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   transition: all 0.2s ease;
   display: flex;
