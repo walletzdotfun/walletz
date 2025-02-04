@@ -17,19 +17,19 @@
 }
 
 .walletz-theme-dark {
-  --walletz-bg-primary: #111827;
-  --walletz-bg-secondary: #1f2937;
+  --walletz-bg-primary: #0a0a0a;
+  --walletz-bg-secondary: #141414;
   --walletz-bg-overlay: rgba(0, 0, 0, 0.85);
   --walletz-text-primary: #f3f4f6;
-  --walletz-text-secondary: #9ca3af;
-  --walletz-border-color: #374151;
-  --walletz-hover-bg: #272f3d;
+  --walletz-text-secondary: #8f8f8f;
+  --walletz-border-color: #262626;
+  --walletz-hover-bg: #1c1c1c;
   --walletz-button-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   --walletz-button-hover: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  --walletz-shadow-color: rgba(0, 0, 0, 0.3);
-  --walletz-disconnect-bg: #450a0a;
+  --walletz-shadow-color: rgba(0, 0, 0, 0.5);
+  --walletz-disconnect-bg: #290707;
   --walletz-disconnect-color: #f87171;
-  --walletz-disconnect-border: #991b1b;
+  --walletz-disconnect-border: #7f1d1d;
   --walletz-connected-status: #22c55e;
 }
 
