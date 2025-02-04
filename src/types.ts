@@ -14,6 +14,36 @@ export interface WalletAdapter {
   removeAccountChange?(): void;
 }
 
+export interface TokenBalance {
+  account: {
+    data: {
+      parsed: {
+        info: {
+          isNative: boolean;
+          mint: string;
+          owner: string;
+          state: string;
+          tokenAmount: {
+            amount: string;
+            decimals: number;
+            uiAmount: number;
+            uiAmountString: string;
+          };
+        };
+        type: string;
+      };
+      program: string;
+      space: number;
+    };
+    executable: boolean;
+    lamports: number;
+    owner: string;
+    rentEpoch: number;
+    space: number;
+  };
+  pubkey: string;
+}
+
 export interface WalletzState {
   walletName: string | null;
   publicKey: string | null; // base58 address
