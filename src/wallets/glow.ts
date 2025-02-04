@@ -51,9 +51,16 @@ export const GlowAdapter: WalletAdapter = {
       throw new Error('Glow does not support signMessage');
     }
     try {
-      const encoded = encodeMessage(message);
-      const { signature } = await provider.signMessage(encoded, 'utf8');
-      return signature;
+      const { signedMessageBase64 } = await provider.signMessage({
+        messageBase64: btoa(message as string),
+      });
+      // Convert base64 to Uint8Array
+      const binaryString = atob(signedMessageBase64);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes;
     } catch (error) {
       throw new Error(`Glow signMessage failed: ${(error as Error).message}`);
     }
