@@ -24,7 +24,11 @@ export const GlowAdapter: WalletAdapter = {
     try {
       const provider = (window as any).glow;
       const resp = await provider.connect();
-      return resp.publicKey?.toString();
+      if (resp.publicKey) {
+        return resp.publicKey.toString();
+      } else {
+        throw new Error('Glow connect failed: No public key returned.');
+      }
     } catch (error) {
       throw new Error(`Glow connect failed: ${(error as Error).message}`);
     }

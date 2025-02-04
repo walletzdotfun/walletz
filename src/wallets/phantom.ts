@@ -26,7 +26,11 @@ export const PhantomAdapter: WalletAdapter = {
     try {
       const provider = (window as any).solana;
       const response = await provider.connect();
-      return response.publicKey?.toString();
+      if (response.publicKey) {
+        return response.publicKey.toString();
+      } else {
+        throw new Error('Phantom connect failed: No public key returned.');
+      }
     } catch (error) {
       throw new Error(`Phantom connect failed: ${(error as Error).message}`);
     }

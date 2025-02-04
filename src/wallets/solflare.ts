@@ -26,7 +26,11 @@ export const SolflareAdapter: WalletAdapter = {
     try {
       const provider = (window as any).solflare;
       await provider.connect();
-      return provider.publicKey?.toString();
+      if (provider.publicKey) {
+        return provider.publicKey.toString();
+      } else {
+        throw new Error('Solflare connect failed: No public key returned.');
+      }
     } catch (error) {
       throw new Error(`Solflare connect failed: ${(error as Error).message}`);
     }
