@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useWalletz } from '../useWalletz';
 import { truncateAddress } from '../utils';
+import './styles.css';
 
 export function WalletzButton() {
   const {
@@ -14,6 +15,19 @@ export function WalletzButton() {
   } = useWalletz();
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleButtonClick = () => {
     if (!connected) {
@@ -24,37 +38,41 @@ export function WalletzButton() {
   };
 
   if (connecting) {
-    return <button disabled>Connecting...</button>;
+    return (
+      <button className="walletz-connect-button loading" disabled>
+        Connecting...
+      </button>
+    );
   }
 
   if (!connected) {
-    return <button onClick={handleButtonClick}>Connect Wallet</button>;
+    return (
+      <button className="walletz-connect-button" onClick={handleButtonClick}>
+        Connect Wallet
+      </button>
+    );
   }
 
   // If connected
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
-      <button onClick={handleButtonClick}>
-        {truncateAddress(publicKey || '')}
-        {balanceSOL !== null ? ` – ${balanceSOL.toFixed(2)} SOL` : ''}
+    <div className="walletz-dropdown-container" ref={dropdownRef}>
+      <button 
+        className="walletz-connect-button walletz-connected" 
+        onClick={handleButtonClick}
+      >
+        <span>{truncateAddress(publicKey || '')}</span>
+        {balanceSOL !== null && (
+          <span className="walletz-balance">{balanceSOL.toFixed(2)} SOL</span>
+        )}
       </button>
+      
       {showDropdown && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            right: 0,
-            background: '#fff',
-            border: '1px solid #ccc',
-            padding: '0.5rem',
-            minWidth: '140px',
-          }}
-        >
-          <div style={{ padding: '0.25rem 0' }}>
-            <strong>{walletName}</strong>
+        <div className="walletz-dropdown">
+          <div className="walletz-dropdown-wallet-name">
+            {walletName}
           </div>
           <button
-            style={{ width: '100%', marginTop: '0.5rem' }}
+            className="walletz-dropdown-disconnect"
             onClick={() => {
               disconnect();
               setShowDropdown(false);

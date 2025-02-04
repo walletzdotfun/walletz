@@ -130,4 +130,197 @@
     grid-template-columns: 1fr;
   }
 }
+
+.walletz-connect-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  color: white;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+}
+
+.walletz-connect-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+}
+
+.walletz-connect-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.walletz-connect-button:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Optional: Add an icon to the button */
+.walletz-connect-button-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+/* Optional: Add a loading state */
+.walletz-connect-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.walletz-connect-button.loading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: button-loading 0.6s linear infinite;
+}
+
+@keyframes button-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add these new styles for the dropdown */
+.walletz-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.walletz-connect-button.walletz-connected {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 0 0 1px rgba(0, 0, 0, 0.01);
+  padding: 10px 16px;
+}
+
+.walletz-connect-button.walletz-connected:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: none;
+}
+
+.walletz-balance {
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid #e2e8f0;
+  color: #64748b;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.walletz-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+  min-width: 240px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: dropdownFade 0.2s ease-out;
+  z-index: 9999;
+  max-width: calc(100vw - 32px);
+  width: max-content;
+}
+
+.walletz-dropdown-wallet-name {
+  padding: 12px 16px;
+  margin: -16px -16px 16px -16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.walletz-dropdown-wallet-name::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.walletz-dropdown-disconnect {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.walletz-dropdown-disconnect:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.walletz-dropdown-disconnect::before {
+  content: "⏻";
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Enhanced dropdown animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .walletz-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: unset;
+    width: calc(100vw - 32px);
+  }
+}
   
