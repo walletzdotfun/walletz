@@ -24,7 +24,7 @@ export function WalletzModal() {
               onClick={() => connect(wallet.name)}
             >
               {wallet.icon && (
-                <img src={wallet.icon} alt={wallet.name} className="walletz-option-icon" />
+                <img src={wallet.icon} alt={wallet.name} className="walletz-option-icon rounded-full" />
               )}
               <span>{wallet.name}</span>
             </button>
@@ -41,7 +41,7 @@ export function WalletzModal() {
                   rel="noreferrer"
                 >
                   {wallet.icon && (
-                    <img src={wallet.icon} alt={wallet.name} className="walletz-option-icon" />
+                    <img src={wallet.icon} alt={wallet.name} className="walletz-option-icon rounded-full" />
                   )}
                   <span>{wallet.name}</span>
                 </a>
