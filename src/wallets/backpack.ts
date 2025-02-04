@@ -54,7 +54,7 @@ export const BackpackAdapter: WalletAdapter = {
     }
     try {
       const encoded = encodeMessage(message);
-      const { signature } = await provider.signMessage(encoded, 'utf8');
+      const { signature } = await provider.signMessage(encoded);
       return signature;
     } catch (error) {
       throw new Error(`Backpack signMessage failed: ${(error as Error).message}`);
