@@ -8,7 +8,7 @@ Walletz is a **high-quality, minimalistic, and fully customizable** React/Next.j
 
 ---
 
-![modal](readme/modal.png)
+![modal](https://raw.githubusercontent.com/walletzdotfun/walletz/refs/heads/master/readme/modal.png)
 
 ---
 
