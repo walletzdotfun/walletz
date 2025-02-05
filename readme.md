@@ -4,7 +4,7 @@ Walletz is a **high-quality, minimalistic, and fully customizable** React/Next.j
 
 * **[Demo](https://demo.walletz.fun)**
 * **[Website](https://walletz.fun)**
-* **[Twitter](https://x.com/walletzdotfun)**
+* **[X](https://x.com/walletzdotfun)**
 
 ---
 
