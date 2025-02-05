@@ -66,6 +66,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
 ### Step 2: Wrap your `layout.tsx` in your `Providers`
 
+Create or modify your **`app/layout.tsx`**:
+
 ```js
 import React from "react";
 import Providers from "./providers";
