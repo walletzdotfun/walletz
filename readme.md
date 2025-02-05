@@ -2,7 +2,8 @@
 
 Walletz is a **high-quality, minimalistic, and fully customizable** React/Next.js package for integrating Solana wallets into your application with a simple **plug and play** **integration**.
 
-**[Demo](https://demo.walletz.fun)**
+**[Demo
+](https://demo.walletz.fun)**
 **[Website](https://walletz.fun)**
 
 ![modal](readme/modal.png)
