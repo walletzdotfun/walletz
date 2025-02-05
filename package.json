@@ -19,7 +19,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": "^18.0.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",
